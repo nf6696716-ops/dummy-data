@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array of Objects - Dummy Data</title>
+  <style>
+    body { font-family: Arial; background: #f4f6f8; padding: 20px; }
+    h1 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #1877f2; color: white; }
+    tr:hover { background: #f1f1f1; }
+    .container { max-width: 900px; margin: auto; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Array of Objects - Dummy Product Data</h1>
+    <table id="productTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- JS se data yahan aayega -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // 1. Array of Objects - dummy data create kiya hai
+    // Koi bhi product le sakte ho: shoes, clothes, medicine, laptop etc.
+    const products = [
+      {
+        id: 1,
+        name: "Dell XPS 15",
+        brand: "Dell",
+        price: 285000,
+        stock: 15,
+        rating: 4.8
+      },
+      {
+        id: 2,
+        name: "MacBook Pro M3",
+        brand: "Apple",
+        price: 420000,
+        stock: 8,
+        rating: 4.9
+      },
+      {
+        id: 3,
+        name: "HP Pavilion 15",
+        brand: "HP",
+        price: 165000,
+        stock: 22,
+        rating: 4.5
+      },
+      {
+        id: 4,
+        name: "Lenovo ThinkPad",
+        brand: "Lenovo",
+        price: 195000,
+        stock: 12,
+        rating: 4.7
+      },
+      {
+        id: 5,
+        name: "ASUS ROG Strix",
+        brand: "ASUS",
+        price: 350000,
+        stock: 5,
+        rating: 4.6
+      }
+    ];
+
+    // 2. DOM Manipulation: querySelector + getElementById
+    const tableBody = document.getElementById('tableBody');
+
+    // 3. Arrow function se har object ko loop karke table me daalna
+    const displayProducts = () => {
+      products.forEach(product => {
+        // createElement se row banana
+        const row = document.createElement('tr');
+        
+        // innerHTML se data insert
+        row.innerHTML = `
+          <td>${product.id}</td>
+          <td>${product.name}</td>
+          <td>${product.brand}</td>
+          <td>Rs ${product.price.toLocaleString()}</td>
+          <td>${product.stock}</td>
+          <td>⭐ ${product.rating}</td>
+        `;
+        
+        // appendChild se table me add
+        tableBody.appendChild(row);
+      });
+    }
+
+    // 4. Console me bhi array of objects check kar lo
+    console.log("Array of Objects:", products);
+    console.log("Total Products:", products.length);
+
+    // Function call
+    displayProducts();
+  </script>
+
+</body>
+</html>
